@@ -1,19 +1,59 @@
----vanWalraven2012
-bibtex: @article{van2012lace+,
-  title={LACE+ index: extension of a validated index to predict early death or urgent readmission after hospital discharge using administrative data},
-  author={van Walraven, Carl and Wong, Jenna and Forster, Alan J},
-  journal={Open Medicine},
-  volume={6},
-  number={3},
-  pages={e80},
-  year={2012},
-  publisher={Open Medicine}
-}
+--- #vanWalraven2012
+citation:
+  title: "LACE+ index\\: extension of a validated index to predict early death or urgent readmission after hospital discharge using administrative data"
+  author: van Walraven, Carl and Wong, Jenna and Forster, Alan J
+  journal: Open Medicine
+  volume: 6
+  number: 3
+  pages: e80
+  year: 2012
+  publisher: Open Medicine
+
 population:
-  n: 500000
+  size: 500000
   institution: Ontario Health System
   start_date: 2003-04-01
   end_date: 2009-03-31
-  
+  discharge: community
+  service: 
+    medical
+    surgical
+  age: adult
+  male: 0.48
+  notes: |
+    One admission per patient in sample
 
+readmissions:
+  type: urgent
+  institution: all
+  days: 30
+  size: 0.06
+  
+performance: 
+  AUC: 0.75
+  validation: contemporaneuous
+  samplesize: 0.5
+  notes: model also used to predict death, which it was much better at, 0.88
+
+model:
+  type: logistic_regression
+  feature_selection: backward_stagewise
+  variables: 
+    index_admission:
+      comorbidity_level
+      nonelective_admission
+      length_of_stay
+      case_mix_group
+      ICU_days
+      alternative_status_days
+      hospital_teaching_status
+      hospital_size
+    prior_utilization:
+      prior_ED_count
+      prior_admission_count_urgent
+      prior_admission_count_elective
+    demographics:
+      age
+      sex
+  prediction_point: claim
 ...
