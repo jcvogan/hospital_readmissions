@@ -1,0 +1,44 @@
+---Donze2013
+bibtex: @article{donze2013potentially,
+  title={Potentially avoidable 30-day hospital readmissions in medical patients: derivation and validation of a prediction model},
+  author={Donz{\'e}, Jacques and Aujesky, Drahomir and Williams, Deborah and Schnipper, Jeffrey L},
+  journal={JAMA internal medicine},
+  volume={173},
+  number={8},
+  pages={632--638},
+  year={2013},
+  publisher={American Medical Association}
+}
+population: 
+  n:  10731
+  institution: Partners
+  service: medical
+  start_date: 2009-07-01
+  end_date: 201-06-30
+  medicare_fraction: 0.51
+  nonhispanic_white: 0.72
+  english_primary: 0.91
+readmissions:
+  n: 879
+  type: potentially_preventable
+  definition: SQLape
+  institution: self
+  days: 30
+performance:
+  AUC: 0.71
+  validation: contemporaneuous
+  samplesize: 0.33
+  notes: Model performed worse, 0.67, when used to predict all-cause readmission
+model:
+  type: logistic_regression
+  feature_selection: backward_stagewise
+  variables: 
+    -hemoglobin
+    -oncology_service
+    -sodium
+    -procedure_binary
+    -nonelective_admission
+    -length_of_stay
+    -prior_admission_count
+  prediction_point: claim
+...
