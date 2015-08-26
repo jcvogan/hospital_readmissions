@@ -14,7 +14,7 @@ population:
   institution: Partners
   service: medical
   start_date: 2009-07-01
-  end_date: 201-06-30
+  end_date: 2010-06-30
   medicare_fraction: 0.51
   nonhispanic_white: 0.72
   english_primary: 0.91
