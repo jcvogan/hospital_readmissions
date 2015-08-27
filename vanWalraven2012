@@ -1,4 +1,5 @@
 --- #vanWalraven2012
+label: LACE+
 citation:
   title: "LACE+ index\\: extension of a validated index to predict early death or urgent readmission after hospital discharge using administrative data"
   author: van Walraven, Carl and Wong, Jenna and Forster, Alan J
@@ -16,8 +17,8 @@ population:
   end_date: 2009-03-31
   discharge: community
   service: 
-    medical
-    surgical
+    - medical
+    - surgical
   age: adult
   male: 0.48
   notes: |
@@ -39,21 +40,21 @@ model:
   type: logistic_regression
   feature_selection: backward_stagewise
   variables: 
-    index_admission:
-      comorbidity_level
-      nonelective_admission
-      length_of_stay
-      case_mix_group
-      ICU_days
-      alternative_status_days
-      hospital_teaching_status
-      hospital_size
-    prior_utilization:
-      prior_ED_count
-      prior_admission_count_urgent
-      prior_admission_count_elective
-    demographics:
-      age
-      sex
+    - index_admission:
+      - comorbidity_level
+      - nonelective_admission
+      - length_of_stay
+      - case_mix_group
+      - ICU_days
+      - alternative_status_days
+      - hospital_teaching_status
+      - hospital_size
+    - prior_utilization:
+      - prior_ED_count
+      - prior_admission_count_urgent
+      - prior_admission_count_elective
+    - demographics:
+      - age
+      - sex
   prediction_point: claim
 ...

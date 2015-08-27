@@ -1,4 +1,5 @@
 --- #Donze2013
+label: HOSPITAL
 citation:
   title: "Potentially avoidable 30-day hospital readmissions in medical patients\\: derivation and validation of a prediction model"
   author: Donz\\'e, Jacques and Aujesky, Drahomir and Williams, Deborah and Schnipper, Jeffrey L
@@ -34,15 +35,15 @@ model:
   type: logistic_regression
   feature_selection: backward_stagewise
   variables: 
-    lab:
-      hemoglobin
-      sodium
-    index_admission:
-      oncology_service
-      procedure_binary
-      nonelective_admission
-      length_of_stay
-    prior_utilization:
-      prior_admission_count
-  prediction_point: claim
+    - lab:
+      - hemoglobin
+      - sodium
+    - index_admission:
+      - oncology_service
+      - procedure_binary
+      - nonelective_admission
+      - length_of_stay
+    - prior_utilization:
+      - prior_admission_count
+  prediction_point: discharge
 ...

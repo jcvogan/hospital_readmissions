@@ -1,0 +1,62 @@
+--- #Billings2012
+label: PARR-30
+citation:
+  title: Development of a predictive model to identify inpatients at risk of re-admission within 30 days of discharge (PARR-30)
+  author: Billings, John and Blunt, Ian and Steventon, Adam and Georghiou, Theo and Lewis, Geraint and Bardsley, Martin
+  journal: BMJ open
+  volume: 2
+  number: 4
+  pages: e001667
+  year: 2012
+  publisher: British Medical Journal Publishing Group
+
+population:
+  size: 576868
+  sample_description: 10% of all admissions
+  institution: England NHS
+  start_date: 2008-04-01
+  end_date: 2009-03-31
+  index_exclusions:
+    - births
+    - deaths
+    - AMA
+    - transfers
+
+readmissions:
+  readmission_exclusions: 
+    - non-emergency
+    - trauma
+    - under_four
+  institution: all
+  days: 30
+  size: 0.12
+  
+performance: 
+  AUC: 0.70
+  validation: bootstrap
+
+model:
+  type: logistic_regression
+  feature_selection: manual
+  variables: 
+    - index_admission:
+      - hospital_dummy
+    - prior_utilization:
+      - prior_admission_count_urgent
+    - demographics:
+      - age
+      - geography
+    - diagnoses:
+      - CHF
+      - PVD
+      - CPD
+      - DMcx
+      - Renal
+      - Metastatic_cancer
+      - Cancer_other
+      - Moderate_Severe_Liver
+      - Liver_other
+      - Dementia
+      - Haemiplegia_parapligia
+  prediction_point: admission
+...
